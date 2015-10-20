@@ -1,0 +1,45 @@
+create table General_laboratory(
+    	pId int not null primary key,			//人员编号
+    	pName varchar(20) not null,			//姓名
+    	pSex varchar(2) not null,			//性别
+    	pPassword varchar(20) not null,			//密码
+	pPoneNumber int not null,			//联系方式
+	pAddress varchar(50) not null,			//地址
+    	SlaveLaboratoryId int,				//从属实验室编号
+    	pWorkingState varchar(20),			//工作状态
+    	LaboratoryPost varchar(20),			//实验室职务
+    	Pay int,					//工薪
+    	LaboratorySeat varchar(60),			//实验室位子信息
+    	Image varchar(60)				//头像
+    )
+
+create table General_laboratory(
+        lId int not null primary key,			//实验室编号
+        lName varchar(20) not null,			//实验室名
+        lAddress varchar(50) not null,			//地址
+    	lPoneNumber int not null,			//联系方式
+       	lMembersNum int not null,			//人员数
+        lWorkingState varchar(20),			//工作状态
+        fFundBalance int not null			//经费余额总数 --外键
+        )
+
+//外键设置
+alter table general_laboratory add constraint fk_fFundBalance foreign key (fFundBalance) references general_funds(fFundBalance）
+
+create table general_project(
+    	pjId int not null primary key,			//项目编号
+    	pjName  varchar(60) not null,			//项目名
+    	pjWorkingState varchar(20) not null,		//项目状态
+    	pjExpectedTime varchar(60),			//预计时间段
+    	pjActualTime varchar(60),			//实际时间段
+    	pjMembersNum int not null,			//参加人数
+    	pjProvideFunding int				//提供经费数
+    )
+
+create table General_funds(
+    	fFundBalance int not null,			//经费余额总数
+    	fDate date	not null,			//日期
+    	fText text,					//事件记录文档
+    	fFundChange	int not null,			//经费变化数
+    	primary key(fFundBalance,fDate)		
+    )
