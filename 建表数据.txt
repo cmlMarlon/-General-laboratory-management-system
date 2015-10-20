@@ -20,10 +20,7 @@ create table General_laboratory(
     	lPoneNumber int not null,			//联系方式
        	lMembersNum int not null,			//人员数
         lWorkingState varchar(20),			//工作状态
-<<<<<<< HEAD
 	lPersonInCharge varchar(32) not null,		//负责人
-=======
->>>>>>> origin/master
         fFundBalance int not null			//经费余额总数 --外键
         )
 
@@ -46,7 +43,6 @@ create table General_funds(
     	fText text,					//事件记录文档
     	fFundChange	int not null,			//经费变化数
     	primary key(fFundBalance,fDate)		
-<<<<<<< HEAD
     )
 
 
@@ -90,11 +86,9 @@ create table general_TeamActive(
     )
 
 create table general_TeamJournalism(
-    tjId int not null primary key,			//
-    tjDate date not null,
-    tjTitle varchar(60),
-    tjText text,
-    tjImage varchar(32)
-=======
->>>>>>> origin/master
+    tjId int not null primary key,			//注册团队新闻编号
+    tjDate date not null,				//注册团队新闻时间
+    tjTitle varchar(60),				//注册团队新闻title
+    tjText text,					//注册团队新闻正文
+    tjImage varchar(32)					//注册团队新闻图片
     )
