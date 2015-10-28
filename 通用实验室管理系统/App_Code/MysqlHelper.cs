@@ -32,15 +32,19 @@ namespace mysqlHelper
         }
         //执行SQL语句，返回影响的记录数
         //<param name="sqlString">sql语句</param>
-        public static int ExcuteNonQuery(string SQLString)
+        public static int ExecuteNonQuery(string SQLString)
         {
             using (MySQLConnection connection = new MySQLConnection(connectionString))
             {
+
                 using (MySQLCommand cmd = new MySQLCommand(SQLString, connection))
                 {
                     try
                     {
                         connection.Open();
+                        MySQLCommand setformat = new MySQLCommand("set names gb2312", connection);
+                        setformat.ExecuteNonQuery();
+                        setformat.Dispose();
                         int rows = cmd.ExecuteNonQuery();
                         return rows;
                     }
@@ -138,6 +142,8 @@ namespace mysqlHelper
             try
             {
                 connection.Open();
+                MySQLDataAdapter command = new MySQLDataAdapter(strSQL, connection);
+                MySQLCommand commn = new MySQLCommand("set names gbk", connection);
                 myReader = cmd.ExecuteReaderEx();
 
                 return myReader;

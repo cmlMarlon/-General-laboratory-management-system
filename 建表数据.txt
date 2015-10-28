@@ -1,4 +1,4 @@
-create table General_laboratory(
+create table General_laboratory_member(
     	pId int not null primary key,			//人员编号
     	pName varchar(20) not null,			//姓名
     	pSex varchar(2) not null,			//性别
