@@ -12,7 +12,7 @@ public partial class 经费管理页面 : System.Web.UI.Page
 {
     public void bind()
     {
-        string sql = "select id, name from test";
+        string sql = "select * from general_funds";
         DataTable dt = MysqlHelper.ExecuteDataTable(sql);
         GridView1.DataSource = dt;
 
@@ -21,9 +21,22 @@ public partial class 经费管理页面 : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        string sql = "select * from test";
+        string sql = "select * from general_funds";
         DataTable dt = MysqlHelper.ExecuteDataTable(sql);
         GridView1.DataSource = dt;
+
+        //string my_sql = "select fText from general_funds";
+        //IDataReader ds = MysqlHelper.ExecuteReader(my_sql);
+        
+        //读取text文本格式
+        //string res = "1";
+        //Response.Write(ds.Read());
+        //while (ds.Read())
+        //{
+        //   res = ds.GetString(ds.GetOrdinal("fText"));
+        //   Response.Write(res);
+        //}
+       
         if (!IsPostBack)
         {
             GridView1.DataBind();
@@ -36,8 +49,11 @@ public partial class 经费管理页面 : System.Web.UI.Page
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        string Testid = GridView1.Rows[e.RowIndex].Cells[0].Text.ToString().Trim();
-        string my_sql = "delete from test where id=" + Testid;
+        string fId = GridView1.Rows[e.RowIndex].Cells[0].Text.ToString().Trim();
+        string fFundBalance = GridView1.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
+        string fDate = GridView1.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
+
+        string my_sql = "delete from general_funds where fId='" + fId + "';";
 
         MysqlHelper.ExecuteNonQuery(my_sql);
 
@@ -58,11 +74,13 @@ public partial class 经费管理页面 : System.Web.UI.Page
     }
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        string id = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[0].Controls[0])).Text.ToString().Trim();
-        string name = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0])).Text.ToString().Trim();
-        //byte[] bytes = Encoding.UTF8.GetBytes(name);
-        //string aaa2 = System.Text.Encoding.UTF8.GetString(bytes);
-        string my_sql = "update test set id=" + id + ", name='" + name + "' where id=" + id;
+        string fId  = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[0].Controls[0])).Text.ToString().Trim();
+        string fFundBalance = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0])).Text.ToString().Trim();
+        string fDate = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[2].Controls[0])).Text.ToString().Trim();
+        string fText = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[3].Controls[0])).Text.ToString().Trim();
+        string fFundChange = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[4].Controls[0])).Text.ToString().Trim();
+
+        string my_sql = "update general_funds set fFundBalance='" + fFundBalance + "',fDate='" + fDate + "', fText='" + fText + "',fFundChange='" + fFundChange + "' where fId="+fId;
         MysqlHelper.ExecuteNonQuery(my_sql);
 
         GridView1.EditIndex = -1;

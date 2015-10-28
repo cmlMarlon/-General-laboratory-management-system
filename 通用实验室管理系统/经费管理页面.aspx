@@ -13,10 +13,13 @@
         <asp:Table ID="Table1" runat="server" Height="80%" Width="100%"></asp:Table>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" GridLines="None" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" OnRowDeleting="GridView1_RowDeleting" Width="100%"  AllowPaging="True" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
             <Columns>
-                <asp:BoundField DataField="id" HeaderText="id" />
-                <asp:BoundField DataField="name" HeaderText="name">
-                    <HeaderStyle Width="50%" />
+                <asp:BoundField DataField="fId" HeaderText="编号" />
+<asp:BoundField DataField="fFundBalance" HeaderText="经费余额总数"></asp:BoundField>
+                <asp:BoundField DataField="fDate" HeaderText="日期" />
+                <asp:BoundField DataField="fText" HeaderText="事件记录文档">
+                    <HeaderStyle Width="40%" />
                 </asp:BoundField>
+                <asp:BoundField DataField="fFundChange" HeaderText="经费变化数" />
                 <asp:CommandField HeaderText="编辑" ShowEditButton="True" />
                 <asp:CommandField EditText="删除" HeaderText="删除" ShowDeleteButton="True" ShowHeader="True" />
             </Columns>

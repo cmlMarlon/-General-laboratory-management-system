@@ -25,7 +25,7 @@ create table General_laboratory(
         )
 
 //外键设置
-alter table general_laboratory add constraint fk_fFundBalance foreign key (fFundBalance) references general_funds(fFundBalance）
+//alter table general_laboratory add constraint fk_fFundBalance foreign key (fFundBalance) references general_funds(fFundBalance）
 
 create table general_project(
     	pjId int not null primary key,			//项目编号
@@ -38,11 +38,12 @@ create table general_project(
     )
 
 create table General_funds(
+	fId int not null primary key,
     	fFundBalance int not null,			//经费余额总数
     	fDate date	not null,			//日期
-    	fText text,					//事件记录文档
+    	fText varchar(1000),					//事件记录文档
     	fFundChange	int not null,			//经费变化数
-    	primary key(fFundBalance,fDate)		
+    //	primary key(fFundBalance,fDate)		
     )
 
 
