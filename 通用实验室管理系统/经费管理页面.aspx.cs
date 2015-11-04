@@ -4,12 +4,31 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
 using mysqlHelper;
 using System.Data;
 using System.Text;
 
 public partial class 经费管理页面 : System.Web.UI.Page
 {
+    //修改日期
+    private void ChangeDate(GridViewRowEventArgs e)
+    {
+        if (e.Row.RowType == DataControlRowType.DataRow)
+        {
+            if (e.Row.RowState == DataControlRowState.Normal || e.Row.RowState == DataControlRowState.Alternate)
+            {
+                //取出时间单元格
+                string dt = e.Row.Cells[3].Text;
+                if(dt != null && dt.Trim() != "")
+                {
+                    //将日期转换为长日期字符串格式
+                    e.Row.Cells[3].Text = Convert.ToDateTime(dt).ToLongDateString();
+                }
+
+            }
+        }
+    }
     public void bind()
     {
         string sql = "select * from general_funds";
@@ -49,7 +68,7 @@ public partial class 经费管理页面 : System.Web.UI.Page
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        string fId = GridView1.Rows[e.RowIndex].Cells[0].Text.ToString().Trim();
+        string fId = GridView1.DataKeys[e.RowIndex].Value.ToString().Trim();        //选取主键
         string fFundBalance = GridView1.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
         string fDate = GridView1.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
 
@@ -74,7 +93,7 @@ public partial class 经费管理页面 : System.Web.UI.Page
     }
     protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
-        string fId  = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[0].Controls[0])).Text.ToString().Trim();
+        string fId = GridView1.DataKeys[e.RowIndex].Value.ToString().Trim();
         string fFundBalance = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[1].Controls[0])).Text.ToString().Trim();
         string fDate = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[2].Controls[0])).Text.ToString().Trim();
         string fText = ((TextBox)(GridView1.Rows[e.RowIndex].Cells[3].Controls[0])).Text.ToString().Trim();
@@ -87,4 +106,14 @@ public partial class 经费管理页面 : System.Web.UI.Page
         bind();
     }
 
+   
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("./经费事件添加.aspx");
+    }
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        bind();
+    }
 }

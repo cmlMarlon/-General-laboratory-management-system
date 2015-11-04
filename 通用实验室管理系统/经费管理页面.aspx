@@ -10,16 +10,17 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Table ID="Table1" runat="server" Height="80%" Width="100%"></asp:Table>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" GridLines="None" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" OnRowDeleting="GridView1_RowDeleting" Width="100%"  AllowPaging="True" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating">
+        <asp:Button ID="Button1" runat="server" Text="添加经费变化事件" Width="15%" OnClick="Button1_Click" />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" GridLines="None" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" OnRowDeleting="GridView1_RowDeleting" Width="100%"  AllowPaging="True" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="fId">
             <Columns>
-                <asp:BoundField DataField="fId" HeaderText="编号" />
+                <asp:BoundField DataField="fId" HeaderText="编号" ReadOnly="True" />
 <asp:BoundField DataField="fFundBalance" HeaderText="经费余额总数"></asp:BoundField>
                 <asp:BoundField DataField="fDate" HeaderText="日期" />
                 <asp:BoundField DataField="fText" HeaderText="事件记录文档">
                     <HeaderStyle Width="40%" />
                 </asp:BoundField>
                 <asp:BoundField DataField="fFundChange" HeaderText="经费变化数" />
+                <asp:BoundField DataField="fTeam" HeaderText="团队" ReadOnly="True" />
                 <asp:CommandField HeaderText="编辑" ShowEditButton="True" />
                 <asp:CommandField EditText="删除" HeaderText="删除" ShowDeleteButton="True" ShowHeader="True" />
             </Columns>
