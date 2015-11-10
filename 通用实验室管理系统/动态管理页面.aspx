@@ -12,9 +12,9 @@
     <div style="width:49%; float:left; height:800px;">
         <h1>新闻动态</h1><br />
        <a href="新闻添加.aspx"><asp:Button ID="添加新新闻" runat="server" Text="添加新新闻" /></a> &nbsp
-        &nbsp
         <asp:Button ID="新闻查询" runat="server" Text="新闻查询" OnClick="新闻查询_Click" /> 
-        <asp:TextBox ID="新闻查询框" runat="server" value="请输入标题" style ="color:#808080" onfocus="javascript:if(this.value == '请输入标题') this.value=''; else style='color:#000'" onBlur="javascript:if(this.value=='') this.value='请输入标题';" ></asp:TextBox>
+        <asp:TextBox ID="新闻查询框" runat="server" value="请输入标题" style ="color:#808080" onfocus="javascript:if(this.value == '请输入标题') this.value=''; else style='color:#000'" onBlur="javascript:if(this.value=='') this.value='请输入标题';" ></asp:TextBox> &nbsp
+        <asp:Button ID="新闻总体查询" runat="server" Text="新闻总体查询" OnClick="新闻总体查询_Click" />
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="tjId" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting" OnRowEditing="GridView1_RowEditing">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -42,17 +42,38 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </div>
-    <div style="width:49%; float:right; height:800px; background-color:yellow">
+    <div style="width:49%; float:right; height:800px;">
         <h1>活动动态</h1><br />
-       <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%">
+         <a href="活动添加.aspx"><asp:Button ID="Button1" runat="server" Text="添加新活动" OnClick="Button1_Click" /></a> &nbsp
+        &nbsp
+        <asp:Button ID="活动查询" runat="server" Text="活动查询" OnClick="活动查询_Click"/> 
+        <asp:TextBox ID="活动查询框" runat="server" value="请输入标题" style ="color:#808080" onfocus="javascript:if(this.value == '请输入标题') this.value=''; else style='color:#000'" onBlur="javascript:if(this.value=='') this.value='请输入标题';" ></asp:TextBox>
+         <asp:Button ID="活动总体查询" runat="server" Text="活动总体查询" OnClick="活动总体查询_Click" />
+         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="taId" HeaderText="编号" ReadOnly="True" />
-<asp:BoundField DataField="taDate" HeaderText="日期"></asp:BoundField>
-                <asp:BoundField DataField="taTitle" HeaderText="新闻标题" >
+                <asp:BoundField DataField="taDate" HeaderText="日期">
+                    <HeaderStyle Width="20%" />
+                </asp:BoundField>
+                <asp:BoundField DataField="taTitle" HeaderText="活动标题" >
                     <HeaderStyle Width="40%" />
                 </asp:BoundField >
-                <asp:HyperLinkField DataNavigateUrlFields="taId" DataNavigateUrlFormatString="动态详情.aspx?id={0}" HeaderText="查看详情" Text="详细" />
+                <asp:HyperLinkField DataNavigateUrlFields="taId" DataNavigateUrlFormatString="活动详情.aspx?id={0}" HeaderText="查看详情" Text="详细" />
+                <asp:CommandField HeaderText="删除" ShowDeleteButton="True">
+                    <HeaderStyle Width="10%" />
+                </asp:CommandField>
             </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </div>
         

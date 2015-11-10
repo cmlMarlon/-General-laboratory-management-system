@@ -21,8 +21,15 @@ create table General_laboratory(
        	lMembersNum int not null,			//人员数
         lWorkingState varchar(20),			//工作状态
 	lPersonInCharge varchar(32) not null,		//负责人
-        fFundBalance int not null			//经费余额总数 --外键
+        fFundBalance int not null			//经费余额总数
+							
         )
+//人员项目对应表：
+create table General_member_project(
+		id int not null primary key,
+	    	pId int not null,			//人员编号
+    		pjId int not null 			//项目编号
+)
 
 //外键设置
 //alter table general_laboratory add constraint fk_fFundBalance foreign key (fFundBalance) references general_funds(fFundBalance）
@@ -35,6 +42,7 @@ create table general_project(
     	pjActualTime varchar(60),			//实际时间段
     	pjMembersNum int not null,			//参加人数
     	pjProvideFunding int				//提供经费数
+							//
     )
 
 create table General_funds(

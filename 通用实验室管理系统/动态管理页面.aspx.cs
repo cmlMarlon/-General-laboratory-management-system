@@ -85,7 +85,44 @@ public partial class 动态管理页面 : System.Web.UI.Page
         }
         else
         {
-            Response.Write("<script>alert(' 请输入查询信息！')</script>");
+            Response.Write("<script>alert(' 请输入新闻查询信息！')</script>");
         }
+    }
+    protected void 活动查询_Click(object sender, EventArgs e)
+    {
+        if (活动查询框.Text != null)
+        {
+            string sql_news_f = "select * from general_TeamActive where taTitle like '%" + 活动查询框.Text.Trim() + "%';";
+            //Response.Write("<script>alert('" + 新闻查询框.Text.Trim() + "')</script>");
+            DataTable ds = MysqlHelper.ExecuteDataTable(sql_news_f);
+            GridView2.DataSource = ds;
+
+            GridView2.DataBind();
+
+        }
+        else
+        {
+            Response.Write("<script>alert(' 请输入活动查询信息！')</script>");
+        }
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("./活动添加.aspx");
+    }
+    protected void 新闻总体查询_Click(object sender, EventArgs e)
+    {
+        string sql_news = "select * from general_TeamJournalism";
+        DataTable dt = MysqlHelper.ExecuteDataTable(sql_news);
+        GridView1.DataSource = dt;
+
+        GridView1.DataBind();
+    }
+    protected void 活动总体查询_Click(object sender, EventArgs e)
+    {
+        string sql_actives = "select * from general_TeamActive";
+        DataTable dt = MysqlHelper.ExecuteDataTable(sql_actives);
+        GridView2.DataSource = dt;
+
+        GridView2.DataBind();
     }
 }

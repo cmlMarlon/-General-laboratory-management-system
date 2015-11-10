@@ -85,7 +85,7 @@ public partial class 新闻详情 : System.Web.UI.Page
          {
              tjImage_change = image_yuan;
          }
-         string my_sql = "update general_TeamJournalism set tjDate='" + tjdateBox.Text.Trim() + "',tjTitle='" + tjtitleBox.Text.Trim() + "', tjText='1213312121',tjImage='" + tjImage_change + "' where tjId=" + tjId_find;
+         string my_sql = "update general_TeamJournalism set tjDate='" + tjdateBox.Text.Trim() + "',tjTitle='" + tjtitleBox.Text.Trim() + "', tjText='"+tjtextBox.Text.Trim()+"',tjImage='" + tjImage_change + "' where tjId=" + tjId_find;
          MysqlHelper.ExecuteNonQuery(my_sql);
 
          Response.Redirect("./新闻详情.aspx?id=" + tjId_find);

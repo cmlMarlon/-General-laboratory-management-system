@@ -114,4 +114,21 @@ public partial class 经费管理页面 : System.Web.UI.Page
         GridView1.PageIndex = e.NewPageIndex;
         bind();
     }
+    protected void 事件查询_Click(object sender, EventArgs e)
+    {
+        if (事件查询框.Text != null)
+        {
+            string sql_news_f = "select * from general_TeamJournalism where tjTitle like '%" + 事件查询框.Text.Trim() + "%';";
+            //Response.Write("<script>alert('" + 新闻查询框.Text.Trim() + "')</script>");
+            DataTable ds = MysqlHelper.ExecuteDataTable(sql_news_f);
+            GridView1.DataSource = ds;
+
+            GridView1.DataBind();
+
+        }
+        else
+        {
+            Response.Write("<script>alert(' 请输入查询信息！')</script>");
+        }
+    }
 }

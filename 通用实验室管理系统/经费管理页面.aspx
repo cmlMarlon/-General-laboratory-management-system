@@ -10,7 +10,9 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Button ID="Button1" runat="server" Text="添加经费变化事件" Width="15%" OnClick="Button1_Click" />
+        <asp:Button ID="Button1" runat="server" Text="添加经费变化事件" Width="15%" OnClick="Button1_Click" />&nbsp
+         <asp:Button ID="新闻查询" runat="server" Text="事件查询" Width="15%" OnClick="事件查询_Click" /> 
+        <asp:TextBox ID="事件查询框" runat="server" value="请输入事件关键字" style ="color:#808080" Width="20%" onfocus="javascript:if(this.value == '请输入事件关键字') this.value=''; else style='color:#000'" onBlur="javascript:if(this.value=='') this.value='请输入事件关键字';" ></asp:TextBox>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" GridLines="None" BackColor="White" BorderColor="#336666" BorderStyle="Double" BorderWidth="3px" OnRowDeleting="GridView1_RowDeleting" Width="100%"  AllowPaging="True" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnPageIndexChanging="GridView1_PageIndexChanging" DataKeyNames="fId">
             <Columns>
                 <asp:BoundField DataField="fId" HeaderText="编号" ReadOnly="True" />
