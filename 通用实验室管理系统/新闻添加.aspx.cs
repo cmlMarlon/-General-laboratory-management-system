@@ -12,7 +12,7 @@ public partial class 新闻添加 : System.Web.UI.Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         string path = FileUpload1.PostedFile.FileName;
-        Response.Write("<script>alert('" + path + "')</script>");
+        //Response.Write("<script>alert('" + path + "')</script>");
         string fileImageNo = Path.GetFileName(FileUpload1.PostedFile.FileName);
 
         if (fileImageNo != null)

@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="width:49%; float:left; height:800px; background-color:;">
+    <div style="width:49%; float:left; height:800px;">
         <h1>新闻动态</h1><br />
        <a href="新闻添加.aspx"><asp:Button ID="添加新新闻" runat="server" Text="添加新新闻" /></a> &nbsp
         &nbsp

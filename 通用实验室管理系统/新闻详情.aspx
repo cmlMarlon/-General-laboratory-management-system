@@ -32,21 +32,20 @@
 <body>
     <form id="form1" runat="server">
     <div id="xinwen_xiugai" style="display:none">
-       <%-- <asp:Button ID="显示新闻" runat="server" Text="显示新闻"  OnClick="forvisible()" /><br />--%>
          <input type="button" value="显示新闻" runat="server" id="显示新闻" onclick="forvisible()"/>&nbsp&nbsp
-         <asp:Button ID="提交修改" runat="server" Text="提交修改" /><br />
+         <asp:Button ID="提交修改" runat="server" Text="提交修改" OnClick="提交修改_Click" /><br />
         <asp:Label ID="tjLabel1" runat="server" Text="时间日期：" for="tjdateBox" Width="150px"  ></asp:Label>
-        <asp:TextBox ID="tjdateBox" runat="server" ></asp:TextBox><br />
+        <asp:TextBox ID="tjdateBox" runat="server" autopostback="true"></asp:TextBox><br />
 
         <asp:Label ID="tjLabel2" runat="server" Text="标 题：" for="tjtitleBox" Width="150px" ></asp:Label>
-        <asp:TextBox ID="tjtitleBox" runat="server"></asp:TextBox><br />
+        <asp:TextBox ID="tjtitleBox" runat="server" autopostback="true"></asp:TextBox><br />
 
         <asp:Label ID="tjLabel3" runat="server" Text="新闻内容：" for="tjtextBox"  Width="150px" ></asp:Label>
         <br />
-        <asp:TextBox ID="tjtextBox" runat="server" TextMode="MultiLine" Width="80%" height="100%"></asp:TextBox><br />
+        <asp:TextBox ID="tjtextBox" runat="server" TextMode="MultiLine" Width="80%" height="100%"  autopostback="true"></asp:TextBox><br />
 
           <asp:Label ID="tjLabel4" runat="server" Text="新闻图片:" for="FileUpload1" Width="150px"  ></asp:Label>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
+            <asp:FileUpload ID="FileUpload1" runat="server" autopostback="true" />
      </div>
      <div id="xinwen_xianshi" style="display:block">
           <input type="button" value="修改新闻" runat="server" id="修改新闻" onclick="forvisible()"/><br />
