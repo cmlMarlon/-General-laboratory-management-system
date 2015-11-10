@@ -69,8 +69,6 @@ public partial class 经费管理页面 : System.Web.UI.Page
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         string fId = GridView1.DataKeys[e.RowIndex].Value.ToString().Trim();        //选取主键
-        string fFundBalance = GridView1.Rows[e.RowIndex].Cells[1].Text.ToString().Trim();
-        string fDate = GridView1.Rows[e.RowIndex].Cells[2].Text.ToString().Trim();
 
         string my_sql = "delete from general_funds where fId='" + fId + "';";
 
