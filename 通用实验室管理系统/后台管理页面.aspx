@@ -47,7 +47,7 @@
             <a href="动态管理页面.aspx" target="rightdiv">
                 <input type="button" value="动态管理页面" class="menubutton" />
             </a>
-            <a href="人员管理页面.aspx" target="rightdiv">
+            <a href="人员管理.aspx" target="rightdiv">
                 <input type="button" value="人员管理页面" class="menubutton" />
             </a>
             <a href="实验室管理页面.aspx" target="rightdiv">
